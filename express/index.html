@@ -6,6 +6,7 @@
 	<title></title>
 </head>
 <body>
+	<section id="studentlist"></section>
 	<script type="text/javascript">
 		fetch("http://localhost:3000/students-list")
 		.then((res)=>{
@@ -13,7 +14,18 @@
 		})
 		.then((updatedjson)=>{
 			console.log(updatedjson)
+			show(updatedjson)
 		})
+		function show(students){
+			for (var i=0;i<students.length;i++){
+				document.getElementById("studentlist").innerHTML+=
+				`
+				<div>
+					<p>${students[i].stdname}</p>
+				</div>
+				`
+			}
+		}
 	</script>
 </body>
 </html>
